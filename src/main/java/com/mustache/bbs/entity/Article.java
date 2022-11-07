@@ -8,14 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
+@Entity     //객체로 인식하도록 한다.
 @NoArgsConstructor
 @Getter
 public class Article {
     @Id
     @GeneratedValue //자동으로 id를 생성한다.
     private Long id;
-    @Column
     private String title;
     private String content;
 
