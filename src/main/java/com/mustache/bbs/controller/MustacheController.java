@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class MustacheController {
     @GetMapping(value = "/hi")      //Endpoint Mapping
     public String mustacheCon(Model model) {
-        model.addAttribute("username", "hoon");     //view에 값을 넘긴다
+        model.addAttribute("username", "훈이");     //view에 값을 넘긴다
         return "greetings";     //greetings라는 이름의 view를 리턴
     }
 
