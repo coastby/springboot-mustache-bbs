@@ -1,4 +1,9 @@
 package com.mustache.bbs.repository;
 
-public interface ArticleRepository {
+import com.mustache.bbs.entity.Article;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ArticleRepository extends JpaRepository<Article, Long> {
 }

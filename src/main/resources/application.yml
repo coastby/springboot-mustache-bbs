@@ -7,3 +7,16 @@ server:
   tomcat:
     uri-encoding: UTF-8
 
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/likelion-db
+    username: root
+    password: 12345
+
+  jpa:
+    show-sql: true    # jpa? ???? ????? query?? ??? ??
+    database-platform: org.hibernate.dialect.MySQL8Dialect    # ??? DB? Dialect ??
+    database : mysql    # ??? DB ??
+    hibernate.ddl-auto : update   #?? ??? ??!!!!??? ? create ?? ? ?!!!!!
