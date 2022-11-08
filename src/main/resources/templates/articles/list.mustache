@@ -1,0 +1,25 @@
+{{>layouts/header}}
+<div class="container my-5">
+    <button type="button" class="btn btn-outline-primary mb-4" onclick="location.href='/articles/new'">New</button>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#articleList}}
+            <tr onclick="location.href='/articles/{{id}}'">
+                <th scope="row">{{id}}</th>
+                <td>{{title}}</td>
+                <td>{{content}}</td>
+            </tr>
+        {{/articleList}}
+        </tbody>
+    </table>
+</div>
+
+
+{{>layouts/footer}}

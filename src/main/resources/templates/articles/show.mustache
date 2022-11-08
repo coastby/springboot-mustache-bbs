@@ -1,6 +1,6 @@
 {{>layouts/header}}
-{{#article}}
 <div class="container mt-5">
+{{#article}}
 <div class="card">
     <div class="card-header">
         {{id}}. {{title}}
@@ -8,9 +8,12 @@
     <div class="card-body">
         {{content}}
     </div>
-</div>
 {{/article}}
-
+</div>
+    <div class="container mt-5">
+        <button type="button" class="btn btn-outline-primary" onclick="location.href='/articles/new'">New</button>
+        <button type="button" class="btn btn-outline-secondary mx-3" onclick="location.href='/articles/list'">List</button>
     </div>
+</div>
 
 {{>layouts/footer}}
