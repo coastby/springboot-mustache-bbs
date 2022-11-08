@@ -32,8 +32,9 @@ public class ArticleController {
     public String createArticle(ArticleDto form){
         log.info(form.toString());
         Article article = form.toEntity();
-        articleRepository.save(article);
-        return "articles/new";
+        Article savedArticle = articleRepository.save(article);
+        log.info("generated id : " + savedArticle.getId());
+        return String.format("redirect:/articles/%d", savedArticle.getId());
     }
     @GetMapping(value = "/{id}")
     public String selectSingle(@PathVariable Long id, Model model) {
@@ -46,5 +47,13 @@ public class ArticleController {
         } else {
             return "articles/error";
         }
+    }
+    @GetMapping("")
+    public String index(){
+        return "redirect:/article/list";
+    }
+    @GetMapping("/list")
+    public String list(){
+        return "list";
     }
 }
