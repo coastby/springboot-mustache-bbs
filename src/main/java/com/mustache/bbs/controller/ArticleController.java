@@ -5,9 +5,14 @@ import com.mustache.bbs.entity.Article;
 import com.mustache.bbs.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.Optional;
 
 @Controller
 @Slf4j
@@ -29,5 +34,17 @@ public class ArticleController {
         Article article = form.toEntity();
         articleRepository.save(article);
         return "articles/new";
+    }
+    @GetMapping(value = "/{id}")
+    public String selectSingle(@PathVariable Long id, Model model) {
+        Optional<Article> articleOptional = articleRepository.findById(id);
+
+        if (!articleOptional.isEmpty()) {
+            //Optional.get() --> Article
+            model.addAttribute("article", articleOptional.get());
+            return "articles/show";
+        } else {
+            return "articles/error";
+        }
     }
 }
