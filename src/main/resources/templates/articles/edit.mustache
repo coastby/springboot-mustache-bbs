@@ -1,0 +1,18 @@
+{{>layouts/header}}
+여기는 edit 페이지 입니다.
+<!--new article form-->
+<form id="new-article-form" action="/articles/posts" method="post" class="mt-5">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Title</label>
+        <input name="title" type="text" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Contents</label>
+        <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <input type="reset" class="btn btn-primary" value="Reset">
+    <button type="button" class="btn btn-outline-secondary mx-3" onclick="location.href='/articles/list'">Cancel</button>
+</form>
+{{>layouts/footer}}

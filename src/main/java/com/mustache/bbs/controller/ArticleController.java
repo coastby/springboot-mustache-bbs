@@ -7,10 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
@@ -47,6 +44,7 @@ public class ArticleController {
             model.addAttribute("article", articleOptional.get());
             return "articles/show";
         } else {
+            model.addAttribute("message", String.format("%d 게시글이 없습니다.", id));
             return "articles/error";
         }
     }
@@ -59,5 +57,16 @@ public class ArticleController {
         List<Article> articleList = articleRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
         model.addAttribute("articleList", articleList);
         return "articles/list";
+    }
+    @GetMapping(value = "/{id}/edit")
+    public String editArticle(@PathVariable long id, Model model){
+        Optional<Article> articleOpt = articleRepository.findById(id);
+        if(!articleOpt.isEmpty()){
+            model.addAttribute("article", articleOpt.get());
+            return "/articles/edit";
+        } else {
+            model.addAttribute("message", String.format("%d 게시글이 없습니다.", id));
+            return "error";
+        }
     }
 }
