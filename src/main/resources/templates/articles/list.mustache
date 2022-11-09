@@ -13,8 +13,10 @@
         {{#articleList}}
             <tr onclick="location.href='/articles/{{id}}'">
                 <th scope="row">{{id}}</th>
-                <td>{{title}}</td>
-                <td>{{content}}</td>
+                <td>{{#title}}{{title}}{{/title}}</td>
+                <td>
+                    {{#content}}{{content}}{{/content}}
+                </td>
             </tr>
         {{/articleList}}
         </tbody>

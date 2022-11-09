@@ -75,4 +75,10 @@ public class ArticleController {
         Article article = articleRepository.save(articleDto.toEntity());
         return String.format("redirect:/articles/%d", article.getId());
     }
+
+    @GetMapping(value = "/{id}/delete")
+    public String delete(@PathVariable Long id){
+        articleRepository.deleteById(id);
+        return "redirect:/articles/list";
+    }
 }

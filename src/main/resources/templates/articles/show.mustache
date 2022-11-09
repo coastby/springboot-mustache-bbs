@@ -3,17 +3,18 @@
 {{#article}}
 <div class="card">
     <div class="card-header">
-        {{id}}. {{title}}
+        {{id}}. {{#title}}{{title}}{{/title}}
     </div>
     <div class="card-body">
-        {{content}}
+        {{#content}}{{content}}{{/content}}
     </div>
 {{/article}}
 </div>
     <div class="container mt-5">
         <button type="button" class="btn btn-outline-primary" onclick="location.href='/articles/new'">New</button>
-        <button type="button" class="btn btn-outline-secondary mx-3" onclick="location.href='/articles/list'">List</button>
-        <button type="button" class="btn btn-outline-primary mx-3" onclick="location.href='/articles/{{article.id}}/edit'">Edit</button>
+        <button type="button" class="btn btn-outline-secondary mx-1" onclick="location.href='/articles/list'">List</button>
+        <button type="button" class="btn btn-outline-primary mx-2" onclick="location.href='/articles/{{article.id}}/edit'">Edit</button>
+        <button type="button" class="btn btn-outline-danger mx-1" onclick="location.href='/articles/{{article.id}}/delete'">Delete</button>
     </div>
 </div>
 
