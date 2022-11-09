@@ -1,5 +1,6 @@
 package com.mustache.bbs.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -7,6 +8,7 @@ import javax.persistence.*;
 
 @Entity     //객체로 인식하도록 한다.
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 public class Article {
     @Id

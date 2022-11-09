@@ -7,17 +7,15 @@ import lombok.ToString;
 
 @Getter
 @ToString
+@AllArgsConstructor
 public class ArticleDto {
     private Long id;
     private String title;
     private String content;
 
-    public ArticleDto(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
 
     public Article toEntity(){
-        return new Article(title, content);
+        return new Article(this.id, this.title, this.content);
     }
+
 }

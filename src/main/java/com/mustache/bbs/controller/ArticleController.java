@@ -44,7 +44,7 @@ public class ArticleController {
             model.addAttribute("article", articleOptional.get());
             return "articles/show";
         } else {
-            model.addAttribute("message", String.format("%d 게시글이 없습니다.", id));
+            model.addAttribute("message", String.format("%d번 게시글이 없습니다.", id));
             return "articles/error";
         }
     }
@@ -65,8 +65,14 @@ public class ArticleController {
             model.addAttribute("article", articleOpt.get());
             return "/articles/edit";
         } else {
-            model.addAttribute("message", String.format("%d 게시글이 없습니다.", id));
+            model.addAttribute("message", String.format("%d번 게시글이 없습니다.", id));
             return "error";
         }
+    }
+    @PostMapping("/update")
+    public String update(ArticleDto articleDto){
+        log.info("{}, {}", articleDto.getTitle(), articleDto.getContent());
+        Article article = articleRepository.save(articleDto.toEntity());
+        return String.format("redirect:/articles/%d", article.getId());
     }
 }

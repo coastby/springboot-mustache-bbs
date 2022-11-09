@@ -1,15 +1,17 @@
 {{>layouts/header}}
-여기는 edit 페이지 입니다.
-<!--new article form-->
-<form id="new-article-form" action="/articles/posts" method="post" class="mt-5">
+<!--edit article form-->
+<form id="new-article-form" action="/articles/update" method="post" class="mt-5">
+    {{#article}}
     <div class="mb-3">
+        <input type="hidden" name="id" value="{{id}}">
         <label for="exampleFormControlInput1" class="form-label">Title</label>
-        <input name="title" type="text" class="form-control" id="exampleFormControlInput1">
+        <input name="title" type="text" class="form-control" id="exampleFormControlInput1" value="{{title}}">
     </div>
     <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Contents</label>
-        <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+        <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="5">{{content}}</textarea>
     </div>
+    {{/article}}
 
     <button type="submit" class="btn btn-primary">Submit</button>
     <input type="reset" class="btn btn-primary" value="Reset">
