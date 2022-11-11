@@ -26,11 +26,14 @@ public class HospitalController {
     }
 
     @GetMapping(value = "/search")
-    public String showSearchList(@RequestParam String keyword, @PageableDefault(size = 15, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, Model model){
-        List<Hospital> hospitals = hospitalService.search(keyword, pageable);
+    public String showSearchList(String keyword, @PageableDefault(size = 15, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, Model model){
+        Page<Hospital> hospitals = hospitalService.search(keyword, pageable);
         model.addAttribute("hospitals", hospitals);
         model.addAttribute("previous", pageable.previousOrFirst().getPageNumber()+"&keyword="+keyword);
         model.addAttribute("next", pageable.next().getPageNumber()+"&keyword="+keyword);
+        model.addAttribute("nowPage", pageable.getPageNumber()+1);
+        model.addAttribute("totalPage", hospitals.getTotalPages());
+
         return "/hospitals/list";
     }
     @GetMapping(value = "/list")
@@ -39,6 +42,8 @@ public class HospitalController {
         model.addAttribute("hospitals", page);
         model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
         model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("nowPage", pageable.getPageNumber()+1);
+        model.addAttribute("totalPage", page.getTotalPages());
         return "/hospitals/list";
     }
 }

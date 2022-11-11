@@ -25,7 +25,10 @@
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="?page={{previous}}">Previous</a></li>
             <li class="page-item"><a class="page-link" href="?page={{next}}">Next</a></li>
-        </ul>
+            <li class="page-item" style="border: none">
+                <a class="page-link">{{nowPage}}/{{totalPage}}</a>
+            </li>
     </nav>
+
 </div>
 {{>layouts/footer}}

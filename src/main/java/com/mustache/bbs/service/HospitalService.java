@@ -3,6 +3,7 @@ package com.mustache.bbs.service;
 import com.mustache.bbs.entity.Hospital;
 import com.mustache.bbs.repository.HospitalRepository;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,8 +19,8 @@ public class HospitalService {
     }
 
     @Transactional
-    public List<Hospital> search (String keyword, Pageable pageable){
-        List<Hospital> hospitalList = hospitalRepository.findByHospitalNameContaining(keyword, pageable);
+    public Page<Hospital> search (String keyword, Pageable pageable){
+        Page<Hospital> hospitalList = hospitalRepository.findByHospitalNameContaining(keyword, pageable);
         return hospitalList;
     }
 
