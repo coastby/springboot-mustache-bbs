@@ -1,0 +1,24 @@
+{{>layouts/header}}
+<div class="container my-5">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">병원</th>
+            <th scope="col">주소</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#hospitals}}
+            <tr onclick="location.href='/articles/{{id}}'">
+                <th scope="row">{{id}}</th>
+                <td>{{#hospitalName}}{{hospitalName}}{{/hospitalName}}</td>
+                <td>
+                    {{#roadNameAddress}}{{roadNameAddress}}{{/roadNameAddress}}
+                </td>
+            </tr>
+        {{/hospitals}}
+        </tbody>
+    </table>
+</div>
+{{>layouts/footer}}

@@ -63,7 +63,7 @@ public class ArticleController {
         Optional<Article> articleOpt = articleRepository.findById(id);
         if(!articleOpt.isEmpty()){
             model.addAttribute("article", articleOpt.get());
-            return "/articles/edit";
+            return "articles/edit";
         } else {
             model.addAttribute("message", String.format("%d번 게시글이 없습니다.", id));
             return "error";
