@@ -1,0 +1,1 @@
+SELECT hospital_name,full_address FROM hospitals_in_korea WHERE full_address LIKE '서울특별시 용산구%' and hospital_name LIKE'%소아과%'

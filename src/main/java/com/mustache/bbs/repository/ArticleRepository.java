@@ -1,6 +1,6 @@
 package com.mustache.bbs.repository;
 
-import com.mustache.bbs.entity.Article;
+import com.mustache.bbs.domain.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

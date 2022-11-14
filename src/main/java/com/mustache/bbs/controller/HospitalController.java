@@ -1,7 +1,6 @@
 package com.mustache.bbs.controller;
 
-import com.mustache.bbs.entity.Hospital;
-import com.mustache.bbs.repository.HospitalRepository;
+import com.mustache.bbs.domain.Hospital;
 import com.mustache.bbs.service.HospitalService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,9 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/hospitals")
@@ -45,5 +41,16 @@ public class HospitalController {
         model.addAttribute("nowPage", pageable.getPageNumber()+1);
         model.addAttribute("totalPage", page.getTotalPages());
         return "/hospitals/list";
+    }
+
+    @GetMapping(value="/{id}")
+    public String shoeHospital(Model model, @PathVariable Integer id){
+        Hospital hospital = hospitalService.getHospital(id);
+        if(hospital != null){
+            model.addAttribute("hospital", hospital);
+            return "/hospitals/show";
+        } else{
+            return "/hospitals/error";
+        }
     }
 }

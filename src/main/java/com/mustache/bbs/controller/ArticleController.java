@@ -1,7 +1,7 @@
 package com.mustache.bbs.controller;
 
 import com.mustache.bbs.dto.ArticleDto;
-import com.mustache.bbs.entity.Article;
+import com.mustache.bbs.domain.Article;
 import com.mustache.bbs.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import java.util.Optional;
 

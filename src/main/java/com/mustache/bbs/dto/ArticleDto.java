@@ -1,6 +1,6 @@
 package com.mustache.bbs.dto;
 
-import com.mustache.bbs.entity.Article;
+import com.mustache.bbs.domain.Article;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;

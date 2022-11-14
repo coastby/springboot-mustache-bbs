@@ -1,14 +1,13 @@
 package com.mustache.bbs.service;
 
-import com.mustache.bbs.entity.Hospital;
+import com.mustache.bbs.domain.Hospital;
 import com.mustache.bbs.repository.HospitalRepository;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HospitalService {
@@ -28,6 +27,13 @@ public class HospitalService {
     public Page<Hospital> getHospitalList(Pageable pageable){
         return hospitalRepository.findAll(pageable);
     }
-
+    public Hospital getHospital(Integer id){
+        Optional<Hospital> hospitalOptional = hospitalRepository.findById(id);
+        if(!hospitalOptional.isEmpty()){
+            return hospitalOptional.get();
+        } else{
+            return null;
+        }
+    }
 
 }
