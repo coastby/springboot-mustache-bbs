@@ -43,5 +43,17 @@ class HospitalRepositoryTest {
         Page<Hospital> hospitals = hospitalRepository.findByRoadNameAddressContainingAndBusinessTypeNameIn(address, types, pageable);
         assertEquals(93, hospitals.getTotalElements());
     }
+    @Test
+    @DisplayName("병상 개수에 따른 병원 리스트")
+    void findByTotalNumberOfBeds(){
+        int min = 10;
+        int max = 20;
+        List<Hospital> hospitals = hospitalRepository.findByTotalNumberOfBedsBetween(min, max);
+        for (int i = 0; i < 200; i++) {
+            System.out.print(hospitals.get(i).getHospitalName()+"\t");
+            System.out.println(hospitals.get(i).getTotalNumberOfBeds());
 
+        }
+        assertEquals(1592, hospitals.size());
+    }
 }
