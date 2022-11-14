@@ -11,5 +11,5 @@ public interface HospitalRepository extends JpaRepository<Hospital, Integer> {
     //키워드를 포함하는 병원명이며 상태가 정상인 병원 리스트 검색
     Page<Hospital> findByHospitalNameContainingAndAndBusinessStatusIs(String keyword, Integer status, Pageable pageable);
     List<Hospital> findByBusinessTypeNameIn(List<String> businessTypes);
-    Page<Hospital> findByRoadNameAddressContainingAndBusinessTypeNameIn(String address, List<String> businessTypes);
+    Page<Hospital> findByRoadNameAddressContainingAndBusinessTypeNameIn(String address, List<String> businessTypes, Pageable pageable);
 }

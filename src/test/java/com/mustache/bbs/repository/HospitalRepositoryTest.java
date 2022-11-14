@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,10 +36,11 @@ class HospitalRepositoryTest {
     @Test
     @DisplayName("특정 지역의 특정 업태의 병원 검색")
     void findByAddressAndBusinessType(){
+        PageRequest pageable = PageRequest.of(0, 10);
         String address = "용산구";
         List<String> types = new ArrayList<>();
         types.add("한의원");
-        Page<Hospital> hospitals = hospitalRepository.findByRoadNameAddressContainingAndBusinessTypeNameIn(address, types);
+        Page<Hospital> hospitals = hospitalRepository.findByRoadNameAddressContainingAndBusinessTypeNameIn(address, types, pageable);
         assertEquals(93, hospitals.getTotalElements());
     }
 
