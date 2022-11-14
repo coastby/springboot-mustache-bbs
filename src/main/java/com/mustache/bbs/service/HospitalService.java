@@ -18,8 +18,8 @@ public class HospitalService {
     }
 
     @Transactional
-    public Page<Hospital> search (String keyword, Pageable pageable){
-        Page<Hospital> hospitalList = hospitalRepository.findByHospitalNameContaining(keyword, pageable);
+    public Page<Hospital> searchWorkingHospital(String keyword, Pageable pageable){
+        Page<Hospital> hospitalList = hospitalRepository.findByHospitalNameContainingAndAndBusinessStatusIs(keyword, 1, pageable);
         return hospitalList;
     }
 

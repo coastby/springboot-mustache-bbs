@@ -23,7 +23,7 @@ public class HospitalController {
 
     @GetMapping(value = "/search")
     public String showSearchList(String keyword, @PageableDefault(size = 15, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, Model model){
-        Page<Hospital> hospitals = hospitalService.search(keyword, pageable);
+        Page<Hospital> hospitals = hospitalService.searchWorkingHospital(keyword, pageable);
         model.addAttribute("hospitals", hospitals);
         model.addAttribute("previous", pageable.previousOrFirst().getPageNumber()+"&keyword="+keyword);
         model.addAttribute("next", pageable.next().getPageNumber()+"&keyword="+keyword);

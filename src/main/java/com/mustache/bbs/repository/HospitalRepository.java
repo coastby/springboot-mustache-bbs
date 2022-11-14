@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface HospitalRepository extends JpaRepository<Hospital, Integer> {
-    Page<Hospital> findByHospitalNameContaining(String keyword, Pageable pageable);
+    //키워드를 포함하는 병원명이며 상태가 정상인 병원 리스트 검색
+    Page<Hospital> findByHospitalNameContainingAndAndBusinessStatusIs(String keyword, Integer status, Pageable pageable);
     List<Hospital> findByBusinessTypeNameIn(List<String> businessTypes);
+    Page<Hospital> findByRoadNameAddressContainingAndBusinessTypeNameIn(String address, List<String> businessTypes);
 }
