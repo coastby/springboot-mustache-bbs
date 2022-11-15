@@ -6,9 +6,8 @@ import lombok.Getter;
 
 import java.time.LocalDateTime;
 
-@Builder
+
 @Getter
-@AllArgsConstructor
 public class HospitalResponse {
     private Integer id;
 //    private String openServiceName;
@@ -26,4 +25,19 @@ public class HospitalResponse {
     private int patientRoomCount;
     private int totalNumberOfBeds;
     private float totalAreaSize;
+    private String businessStatusName;
+
+    public HospitalResponse(Integer id, String roadNameAddress, String hospitalName, String businessTypeName, int patientRoomCount, int totalNumberOfBeds, float totalAreaSize) {
+        this.id = id;
+        this.roadNameAddress = roadNameAddress;
+        this.hospitalName = hospitalName;
+        this.businessTypeName = businessTypeName;
+        this.patientRoomCount = patientRoomCount;
+        this.totalNumberOfBeds = totalNumberOfBeds;
+        this.totalAreaSize = totalAreaSize;
+    }
+
+    public void setBusinessStatusName(String businessStatusName) {
+        this.businessStatusName = businessStatusName;
+    }
 }

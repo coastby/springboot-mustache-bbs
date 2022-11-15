@@ -8,11 +8,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 @RequestMapping("/hospitals")
@@ -58,4 +57,16 @@ public class HospitalController {
             return "hospitals/error";
         }
     }
+    @PostMapping(value="/filter")
+    public String filteredList(@RequestParam String address, @RequestParam List<String> types, Model model, @PageableDefault(size = 15, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+        Page<Hospital> hospitals = hospitalService.getHospitalByAddressAndType(address, types, pageable);
+        model.addAttribute("hospitals", hospitals);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("nowPage", pageable.getPageNumber()+1);
+        model.addAttribute("totalPage", hospitals.getTotalPages());
+
+        return "hospitals/list";
+    }
+
 }
