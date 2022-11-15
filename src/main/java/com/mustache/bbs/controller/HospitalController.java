@@ -32,7 +32,7 @@ public class HospitalController {
         model.addAttribute("nowPage", pageable.getPageNumber()+1);
         model.addAttribute("totalPage", hospitals.getTotalPages());
 
-        return "/hospitals/list";
+        return "hospitals/list";
     }
     @GetMapping(value = "/list")
     public String showList(Model model, @PageableDefault(size = 15, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
@@ -42,7 +42,7 @@ public class HospitalController {
         model.addAttribute("next", pageable.next().getPageNumber());
         model.addAttribute("nowPage", pageable.getPageNumber()+1);
         model.addAttribute("totalPage", page.getTotalPages());
-        return "/hospitals/list";
+        return "hospitals/list";
     }
 
     @GetMapping(value="/{id}")
@@ -53,9 +53,9 @@ public class HospitalController {
             LocalDateTime date = hospital.getLicenseDate();
             int year = date.getYear();
             model.addAttribute("licenceYear", year);
-            return "/hospitals/show";
+            return "hospitals/show";
         } else{
-            return "/hospitals/error";
+            return "hospitals/error";
         }
     }
 }
