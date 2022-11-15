@@ -1,22 +1,40 @@
 {{>layouts/header}}
 <div class="container mt-5">
-{{#article}}
+    <button type="button" class="btn btn-outline-secondary mx-1" onclick="location.href='/hospitals/list'">List</button>
+</div>
+<div class="container mt-5">
+{{#hospital}}
 <div class="card">
     <div class="card-header">
-        {{id}}. {{#title}}{{title}}{{/title}}
+        <h3>{{hospitalName}}</h3>
+        <h6 class="card-subtitle mb-2 text-muted">{{#phone}}{{phone}}{{/phone}} / {{#roadNameAddress}}{{roadNameAddress}}{{/roadNameAddress}}
+            {{^roadNameAddress}}{{#fullAddress}}{{fullAddress}}{{/fullAddress}}{{/roadNameAddress}}</h6>
     </div>
     <div class="card-body">
-        {{#content}}{{content}}{{/content}}
+        <table class="table table-sm">
+            <tbody>
+            <tr>
+                <th scope="row">업태</th>
+                <td>{{businessTypeName}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Since</th>
+                <td>{{licenceYear}}</td>
+            </tr>
+            <tr>
+                <th scope="row">총 면적</th>
+                <td>{{totalAreaSize}}</td>
+            </tr>
+            <tr>
+                <th scope="row">병상 수</th>
+                <td>{{totalNumberOfBeds}}</td>
+            </tr>
+
+            </tbody>
+        </table>
     </div>
-{{/article}}
-</div>
-    <div class="container mt-5">
-        <button type="button" class="btn btn-outline-primary" onclick="location.href='/articles/new'">New</button>
-        <button type="button" class="btn btn-outline-secondary mx-1" onclick="location.href='/articles/list'">List</button>
-        <button type="button" class="btn btn-outline-primary mx-2" onclick="location.href='/articles/{{article.id}}/edit'">Edit</button>
-        <button type="button" class="btn btn-outline-danger mx-1" onclick="location.href='/articles/{{article.id}}/delete'">Delete</button>
-    </div>
-</div>요
+{{/hospital}}
+
 <div class="container mt-5">
 <ul class="list-group list-group-flush">
     <li class="list-group-item"><b>Comments</b></li>
@@ -25,7 +43,7 @@
     <li class="list-group-item">A fourth item</li>
     <li class="list-group-item">And a fifth one</li>
 </ul>
-
+</div>
 </div>
 
 {{>layouts/footer}}

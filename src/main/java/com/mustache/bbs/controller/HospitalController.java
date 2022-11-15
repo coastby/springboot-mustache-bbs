@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDateTime;
+
 @Controller
 @RequestMapping("/hospitals")
 public class HospitalController {
@@ -48,6 +50,9 @@ public class HospitalController {
         Hospital hospital = hospitalService.getHospital(id);
         if(hospital != null){
             model.addAttribute("hospital", hospital);
+            LocalDateTime date = hospital.getLicenseDate();
+            int year = date.getYear();
+            model.addAttribute("licenceYear", year);
             return "/hospitals/show";
         } else{
             return "/hospitals/error";

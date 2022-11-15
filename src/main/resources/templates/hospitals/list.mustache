@@ -12,7 +12,11 @@
         {{#hospitals}}
             <tr onclick="location.href='#'">
                 <th scope="row">{{id}}</th>
-                <td>{{#hospitalName}}{{hospitalName}}{{/hospitalName}}</td>
+                <td>
+                    <a href="/hospitals/{{id}}">
+                        {{#hospitalName}}{{hospitalName}}{{/hospitalName}}
+                    </a>
+                </td>
                 <td>
                     {{#roadNameAddress}}{{roadNameAddress}}{{/roadNameAddress}}
                 </td>
@@ -28,6 +32,7 @@
             <li class="page-item" style="border: none">
                 <a class="page-link">{{nowPage}}/{{totalPage}}</a>
             </li>
+        </ul>
     </nav>
 
 </div>

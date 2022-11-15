@@ -1,5 +1,6 @@
 package com.mustache.bbs.domain;
 
+import com.mustache.bbs.dto.HospitalResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,4 +32,8 @@ public class Hospital {
     private int patientRoomCount;
     private int totalNumberOfBeds;
     private float totalAreaSize;
+
+    public static HospitalResponse of(Hospital hospital){
+        return new HospitalResponse(hospital.getId(), hospital.getRoadNameAddress(), hospital.getHospitalName(), hospital.getBusinessTypeName(), hospital.getPatientRoomCount(), hospital.getTotalNumberOfBeds(), hospital.getTotalAreaSize());
+    }
 }
