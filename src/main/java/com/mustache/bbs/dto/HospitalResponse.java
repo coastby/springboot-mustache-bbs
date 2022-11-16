@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 
 
 @Getter
+@Builder
+@AllArgsConstructor
 public class HospitalResponse {
     private Integer id;
 //    private String openServiceName;
