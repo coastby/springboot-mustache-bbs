@@ -62,10 +62,13 @@ public class HospitalController {
     @GetMapping(value="/filter")
     public String filteredList(HospitalListDto hospitalListDto, Model model, @PageableDefault(size = 15, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
         if(hospitalListDto == null){
-            return "hospitals/list";
+            return "redirect:/hospitals/list";
+        }
+        if(hospitalListDto.getTypes() == null){
+            return "redirect:/hospitals/list";
         }
         Page<Hospital> hospitals = hospitalService.getHospitalByAddressAndType(hospitalListDto, pageable);
-        String url = String.format("&address=%s&types=", hospitalListDto.getAddress(), hospitalListDto.getStringOfTypes());
+        String url = String.format("&address=%s&types=%s", hospitalListDto.getAddress(), hospitalListDto.getStringOfTypes());
         model.addAttribute("hospitals", hospitals);
         model.addAttribute("previous", pageable.previousOrFirst().getPageNumber()+url);
         model.addAttribute("next", pageable.next().getPageNumber()+url);
