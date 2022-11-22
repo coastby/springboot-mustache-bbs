@@ -57,7 +57,7 @@
                 한의원
             </label>
         </div>
-        <button type="submit" class="btn btn-primary my-2">Submit</button>
+        <button type="submit" class="btn btn-primary my-2" onclick="OnSave()">Submit</button>
     </form>
 </div>
 
@@ -100,4 +100,14 @@
     </nav>
 
 </div>
+
+<script>
+    function OnSave(){
+        var type_check = document.querySelectorAll('input[name="types"]:checked').length;
+        if(type_check == 0){
+            alert("업태를 하나 이상 체크해주세요.")
+            return false;
+        }
+    }
+</script>
 {{>layouts/footer}}
