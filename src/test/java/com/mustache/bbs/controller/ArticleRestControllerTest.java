@@ -60,7 +60,7 @@ class ArticleRestControllerTest {
     void add() throws Exception {
         //Mock 객체에서 특정 메서드가 실행되는 경우 실제 return을 줄 수 없기 때문에 아래와 같이 가정 사항을 만들어준다.
         ArticleAddRequest articleAddRequest = new ArticleAddRequest("제목", "내용");
-        given(articleService.saveArticle(any()))
+        given(articleService.saveArticle(articleAddRequest))
         .willReturn(new ArticleDto(1L, "제목", "내용"));
 
         Gson gson = new Gson();
@@ -68,7 +68,7 @@ class ArticleRestControllerTest {
 
 
         mockMvc.perform(post("/api/v1/articles")
-//                .content(objectMapper.writeValueAsBytes(new ArticleAddRequest("제목", "내용")))
+//                .content(objectMapper.writeValueAsBytes(new ArticleAddRequest("제목", "내용")))    //ObjectMapper 사용
                 .content(content)
                 .contentType(MediaType.APPLICATION_JSON)
             )
@@ -77,7 +77,7 @@ class ArticleRestControllerTest {
                 .andExpect(jsonPath("$.title").value("제목"))
                 .andExpect(jsonPath("$.content").exists())
                 .andDo(print());
-        verify(articleService).saveArticle(refEq(articleAddRequest));   //Argument(s) are different! Wanted:에러가 발생하여 refEq() 사용
+        verify(articleService).saveArticle(articleAddRequest);   //Argument(s) are different! Wanted:에러가 발생하여 refEq() 사용
     }
 
 }

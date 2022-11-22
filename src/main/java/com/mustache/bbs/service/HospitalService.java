@@ -1,6 +1,7 @@
 package com.mustache.bbs.service;
 
 import com.mustache.bbs.domain.Hospital;
+import com.mustache.bbs.dto.HospitalListDto;
 import com.mustache.bbs.dto.HospitalResponse;
 import com.mustache.bbs.repository.HospitalRepository;
 import org.springframework.data.domain.Page;
@@ -8,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,8 +41,10 @@ public class HospitalService {
     }
 
     @Transactional
-    public Page<Hospital> getHospitalByAddressAndType(String address, List<String> types, Pageable pageable){
-        Page<Hospital> page = hospitalRepository.findByRoadNameAddressContainingAndBusinessTypeNameIn(address, types, pageable);
+    public Page<Hospital> getHospitalByAddressAndType(HospitalListDto hospitalListDto, Pageable pageable) {
+        //field 중 null값을 ""으로 치환
+        hospitalListDto = hospitalListDto.toNotNull();
+        Page<Hospital> page = hospitalRepository.findByRoadNameAddressContainingAndBusinessTypeNameIn(hospitalListDto.getAddress(), hospitalListDto.getTypes(), pageable);
         return page;
     }
 
