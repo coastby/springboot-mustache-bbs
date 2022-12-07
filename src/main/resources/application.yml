@@ -20,3 +20,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect    # ??? DB? Dialect ??
     database : mysql    # ??? DB ??
     hibernate.ddl-auto : update   #?? ??? ??!!!!??? ? create ?? ? ?!!!!!
+
+jwt:
+  token:
+    secret-key: 1234
