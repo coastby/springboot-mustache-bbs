@@ -13,4 +13,6 @@ public class User {
     private Long id;
     private String userId;
     private String password;
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 }
