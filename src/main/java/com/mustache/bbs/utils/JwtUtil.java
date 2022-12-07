@@ -33,7 +33,7 @@ public class JwtUtil {
 
     //token에서 claim 추출하는 메서드
     public static Claims extractClaims(String token, String key){
-        return Jwts.parserBuilder().setSigningKey(JwtUtil.makeKey(key)).build().parseClaimsJwt(token).getBody();
+        return Jwts.parserBuilder().setSigningKey(JwtUtil.makeKey(key)).build().parseClaimsJws(token).getBody();
     }
     //유효한 token인지 확인하는 메서드
     public static boolean validateToken (String token, String key){

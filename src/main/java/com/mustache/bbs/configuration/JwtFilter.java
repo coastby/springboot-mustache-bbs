@@ -38,6 +38,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
         //토큰이 유효한지 확인하기
         if(!JwtUtil.validateToken(token, key)){
+            log.error("token : {}", token);
             filterChain.doFilter(request, response);
             return;
         }
