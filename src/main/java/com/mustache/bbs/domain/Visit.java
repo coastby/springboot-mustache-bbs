@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Visit {
+public class Visit extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,7 +24,7 @@ public class Visit {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    private LocalDateTime createdDate;
+//    private LocalDateTime createdDate;
     private String disease;
     private long cost;
 }

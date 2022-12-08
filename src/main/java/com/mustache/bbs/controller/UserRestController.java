@@ -17,9 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserRestController {
     private final UserService userService;
+
+    @PostMapping
+    public ResponseEntity<UserJoinResponse> join(@RequestBody UserJoinRequest userJoinRequest){
+
+    }
     @PostMapping(value = "/login")
     public ResponseEntity<UserLoginResponse> login(@RequestBody UserLoginRequest userLoginRequest){
         UserLoginResponse userResponse = userService.login(userLoginRequest);
         return ResponseEntity.ok().body(userResponse);
     }
+
 }

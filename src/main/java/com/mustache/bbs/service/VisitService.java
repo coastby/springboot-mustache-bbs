@@ -27,12 +27,12 @@ public class VisitService {
         User writer = userRepository.findByUserId(userId).orElseThrow(() -> new RuntimeException("올바르지 않은 아이디입니다."));
         Hospital hospital = hospitalRepository.findById(request.getHospitalId())
                 .orElseThrow(() -> new RuntimeException("해당되는 병원이 없습니다."));
-        LocalDateTime now = LocalDateTime.now();
+        //LocalDateTime now = LocalDateTime.now();
         Visit visit = Visit.builder()
                 .disease(request.getDisease())
                 .cost(request.getCost())
                 .content(request.getContent())
-                .createdDate(now)
+//                .createdDate(now)
                 .user(writer)
                 .hospital(hospital)
                 .build();
