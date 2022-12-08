@@ -20,7 +20,8 @@ public class UserRestController {
 
     @PostMapping
     public ResponseEntity<UserJoinResponse> join(@RequestBody UserJoinRequest userJoinRequest){
-
+        UserJoinResponse response = userService.join(userJoinRequest);
+        return ResponseEntity.ok().body(response);
     }
     @PostMapping(value = "/login")
     public ResponseEntity<UserLoginResponse> login(@RequestBody UserLoginRequest userLoginRequest){
