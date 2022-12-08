@@ -28,4 +28,14 @@ public class VisitRestController {
         List<VisitResponse> responses = visitService.showVisitList();
         return ResponseEntity.ok().body(responses);
     }
+    @GetMapping(value = "/users/{id}")
+    public ResponseEntity<List<VisitResponse>> showVisitsOfUser(@PathVariable Long id){
+        List<VisitResponse> responses = visitService.showVisitsOfUser(id);
+        return ResponseEntity.ok().body(responses);
+    }
+    @GetMapping(value = "/hospitals/{id}")
+    public ResponseEntity<List<VisitResponse>> showVisitorsOfHospital(@PathVariable Integer id){
+        List<VisitResponse> responses = visitService.showVisitorsOfHospital(id);
+        return ResponseEntity.ok().body(responses);
+    }
 }

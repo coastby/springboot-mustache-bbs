@@ -45,4 +45,13 @@ public class VisitService {
         List<Visit> visits = visitRepository.findAll();
         return visits.stream().map(VisitResponse::from).collect(Collectors.toList());
     }
+
+    public List<VisitResponse> showVisitsOfUser(Long id) {
+        List<Visit> visits = visitRepository.findByUserId(id);
+        return visits.stream().map(VisitResponse::from).collect(Collectors.toList());
+    }
+    public List<VisitResponse> showVisitorsOfHospital(Integer id) {
+        List<Visit> visits = visitRepository.findByHospitalId(id);
+        return visits.stream().map(VisitResponse::from).collect(Collectors.toList());
+    }
 }
