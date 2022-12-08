@@ -27,5 +27,4 @@ public class Visit {
     private LocalDateTime createdDate;
     private String disease;
     private long cost;
-
 }

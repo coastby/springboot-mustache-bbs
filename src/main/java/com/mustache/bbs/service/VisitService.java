@@ -3,6 +3,7 @@ package com.mustache.bbs.service;
 import com.mustache.bbs.domain.Hospital;
 import com.mustache.bbs.domain.User;
 import com.mustache.bbs.domain.Visit;
+import com.mustache.bbs.dto.VisitResponse;
 import com.mustache.bbs.dto.VisitWriteRequest;
 import com.mustache.bbs.dto.VisitWriteResponse;
 import com.mustache.bbs.repository.HospitalRepository;
@@ -12,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -38,4 +41,8 @@ public class VisitService {
     }
 
 
+    public List<VisitResponse> showVisitList() {
+        List<Visit> visits = visitRepository.findAll();
+        return visits.stream().map(VisitResponse::from).collect(Collectors.toList());
+    }
 }
